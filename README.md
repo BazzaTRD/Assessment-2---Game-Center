@@ -12,7 +12,7 @@ STEP 2: Clone the repository onto your local machine
   1. Copy the path of the folder you just created
   2. Select the option Clone a repository from the Internet
   3. Find this repository
-  4. Paste the local path you copied into the thing
+  4. Paste the local path you copied into the local path thing
 
 STEP 3: Making changes and publishing them to the cloud
   1. Once you make changes to the files on your local drive, the GitHub app should give you a choice to commit your changes to main.
