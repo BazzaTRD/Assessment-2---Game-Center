@@ -21,6 +21,7 @@ STEP 3: Making changes and publishing them to the cloud
   4. If any changes are made by the others, you will need to fetch those files by clicking fetch origin on the GitHub app.
   5. Then click Pull Origin
 
+https://www.youtube.com/watch?v=Oaj3RBIoGFc
 
 David or I will commit your changes to the Game Center one, so try not to publish any changes to that specific file.
 Otherwise, glhf!!
