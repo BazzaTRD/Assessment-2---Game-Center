@@ -1,6 +1,5 @@
 import random
 
-
 def number_game():
     print("\n--- Number Guessing Game ---")
     target = random.randint(1, 100)
@@ -84,4 +83,5 @@ def main():
             print("Thanks for playing. Goodbye!")
             break
 
-    main()
+
+main()
