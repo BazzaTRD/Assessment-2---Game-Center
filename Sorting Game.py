@@ -20,4 +20,6 @@ def sorting_game():
     else:
         print("Invalid option. Displaying original list:", numbers)
 
-sorting_game()
+play = input("Would you like to play the sorting game? (yes/no): ").lower()
+if play == "yes":
+    sorting_game()
