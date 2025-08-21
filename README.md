@@ -18,7 +18,7 @@ STEP 3: Making changes and publishing them to the cloud
   1. Once you make changes to the files on your local drive, the GitHub app should give you a choice to commit your changes to main.
   2. Click commit to main on your GitHub app
   3. Then click push to origin when that shows up.
-  4. If any changes are made by the others, it will ask you to pull those changes onto your machine. Do it.
+  4. If any changes are made by the others, you will need to fetch those files by clicking fetch origin on the GitHub app.
 
 
 David or I will commit your changes to the Game Center one, so try not to publish any changes to that specific file.
