@@ -1,5 +1,11 @@
 #Barry
 
+# Randomly generate 'n' (input by player) number of numbers from -999 to 999, place them all in a list
+# Ask to sort in asc or desc order
+# Player will enter the numbers 1 by 1 in the order that they had selected
+# The computer will check if the number is the correct one. If the selected number is incorrect, the player loses
+# The results of the game will be displayed (the correct number for the current guess, how many numbers guessed correct, how many numbers weren't guessed)
+
 def sorting_game():
     print("\n--- Number Sorting Game ---")
     numbers = []
