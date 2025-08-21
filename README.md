@@ -5,7 +5,7 @@ https://desktop.github.com/download/
 STEP 1: Set up GitHub to be used on your local machine
   1. Download the GitHub app
   2. Sign in to the app
-  3. Create an empty folder to house our collaborative repository
+  3. Create an empty folder on your PC to house our collaborative repository
 
 
 STEP 2: Clone the repository onto your local machine
