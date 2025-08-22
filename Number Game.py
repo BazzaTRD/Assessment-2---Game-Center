@@ -1,7 +1,9 @@
 #Jin
+
+import random
 def number_game():
     print("\n--- Number Guessing Game ---")
-    import random
+    
     target = random.randint(1, 100)
     attempt = 0
 
@@ -18,5 +20,6 @@ def number_game():
                 break                
         except ValueError:
             print("Invalid input. Please enter a number.")
+            break
 
 number_game()
