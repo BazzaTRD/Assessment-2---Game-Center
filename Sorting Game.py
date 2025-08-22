@@ -21,7 +21,7 @@ def sorting_game(intNumberOf):
     print(f"You have chosen to sort '{intNumberOf}' numbers.")
     time.sleep(0.5)
     intNumberOf = len(listNumbers) # Debug
-    print(f"\n Your {intNumberOf} numbers are... \n {listNumbers}")
+    print(f"\nYour {intNumberOf} numbers are... \n {listNumbers}")
     time.sleep(1)
 
     #Sorting the list
