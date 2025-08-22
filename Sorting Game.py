@@ -32,6 +32,9 @@ def sorting_game(intNumberOf):
     elif stringAscDesc == "desc":
         print("You have chosen to sort the list in DESCENDING order!")
         listNumbers.sort(reverse = True)
+    else:
+        print("You have exited the game.")
+        return
     time.sleep(.5)
     print("Let the games... BEGIN!!")
     time.sleep(1)
@@ -60,7 +63,7 @@ if play == "yes":
         # Return results
         if sortingReturn == True:
             print("\nCongratulations! You have won!")
-        else:
+        elif sortingReturn == False:
             print("\nYou have lost...")
         print("Thanks for playing the Sorting Game!")
     except ValueError as e:
