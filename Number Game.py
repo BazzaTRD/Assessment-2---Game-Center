@@ -1,6 +1,11 @@
 #Jin
 
-import random
+# Number Game description: The game asks the player to guess a radomly 
+# generated number between 1 and 100. The player has  
+
+
+import random 
+
 def number_game():
     print("\n--- Number Guessing Game ---")
     
@@ -17,7 +22,9 @@ def number_game():
                 print("Too low!")
             else:
                 print("Correct! You guessed the number in " , attempt, "attempts and the number is " , target)
-                break                
+                break   
+            if target + 5 > guess > target - 5:
+                print("You are very close")             
         except ValueError:
             print("Invalid input. Please enter a number.")
             break
