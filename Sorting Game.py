@@ -16,7 +16,7 @@ def sorting_game(intNumberOf):
     
     # Setting up the game
     listNumbers = []
-    for i in range(1, intNumberOf + 1):
+    for i in range(0, intNumberOf):
         listNumbers.append(random.randrange(-999, 999))
     print(f"You have chosen to sort '{intNumberOf}' numbers.")
     time.sleep(0.5)
@@ -65,7 +65,8 @@ if play == "yes":
             print("\nCongratulations! You have won!")
         elif sortingReturn == False:
             print("\nYou have lost...")
-        print("Thanks for playing the Sorting Game!")
     except ValueError as e:
         print(f"Invalid input... Exiting with error code: {e}")
+    finally:
+        print("Thanks for playing the Sorting Game!")
     time.sleep(1)
