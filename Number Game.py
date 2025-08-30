@@ -31,7 +31,8 @@ def number_game():                             # define number_game function
             if guess - 5 < target < guess + 5:           # additional condition if the guess is close to target by -5 or +5
                 print("You are very close.")             # print You are very close.
         except ValueError:                               # try/except block to handle possible errors
-            print("Invalid input. Please enter a number. ")   # print Invalid input. Please enter a number.
+            print("Invalid input. Please enter a number only and try again. ")   # print Invalid input. Remind to enter number only
+                                                                                 # and try again.
             break                                             # when error occurred, end the game.
 
 number_game()                                                 # call the function
