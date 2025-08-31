@@ -6,7 +6,7 @@
 # Ask to sort in asc or desc order
 # Player will enter the numbers 1 by 1 in the order that they had selected
 # The computer will check if the number is the correct one + if the number is in the list. If the selected number is incorrect, the player loses
-# The results of the game will be displayed (the correct number for the current guess, how many numbers guessed correct, how many numbers weren't guessed)
+# The results of the game will be displayed (the correct number for the current guess, how many numbers guessed correct)
 
 import random
 import time
@@ -16,7 +16,7 @@ def sorting_game(intNumberOf):
     
     # Setting up the game
     listNumbers = []
-    for i in range(1, intNumberOf + 1):
+    for i in range(0, intNumberOf):
         listNumbers.append(random.randrange(-999, 999))
     print(f"You have chosen to sort '{intNumberOf}' numbers.")
     time.sleep(0.5)
@@ -47,6 +47,7 @@ def sorting_game(intNumberOf):
         currNumAns = listNumbers[currNumIndex]
         if intPlayerAns != currNumAns:
             print(f"Incorrect! The number was {currNumAns}.")
+            print(f"You guessed {currNumIndex} out of {intNumberOf} numbers correctly.")
             return False
         print("Correct!")
         listPlayerAns.append(intPlayerAns)
@@ -65,7 +66,8 @@ if play == "yes":
             print("\nCongratulations! You have won!")
         elif sortingReturn == False:
             print("\nYou have lost...")
-        print("Thanks for playing the Sorting Game!")
     except ValueError as e:
-        print(f"Invalid input... Exiting with error code: {e}")
+        print(f"Invalid input... Reason: {e}")
+    finally:
+        print("Thanks for playing the Sorting Game!")
     time.sleep(1)
