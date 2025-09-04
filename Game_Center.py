@@ -4,30 +4,31 @@ import subprocess
 
 #WRITE RESULTS: Modify the save file
 #RETURNS: None
-def write_result(game_num, result, user_file):
+def write_result(game_id, result, user_file):
     #write to the user file (other scripts use this)
     #place values into a list
-    #'game_num' will be the dedicated number of the actual game ([0]number_guesser [1,2], [3]rock_paper_scissors [4,5], [6]number_sorting [7,8])
+    #'game_num' will be the dedicated number of the actual game (1-number_guesser [0][1,2], 2-rock_paper_scissors [3][4,5], 3-number_sorting [6][7,8])
     #'result' will be a boolean value of true(win) or false(lose)
     
     list_file_content = read_result(user_file)
-    if game_num == 1: #Number Guesser game
-        if result == True:
-            list_file_content[1] = int(list_file_content[1]) + 1
-        elif result == False:
-            list_file_content[2] += 1
-    elif game_num == 2: #Rock Paper Scissors game
-        if result == True:
-            list_file_content[4] += 1
-        elif result == False:
-            list_file_content[5] += 1
-    elif game_num == 3: #Sorting game
-        if result == True:
-            print("sorting game true")
-            list_file_content[7] = int(list_file_content[7]) + 1
-        elif result == False:
-            print("sorting game false")
-            list_file_content[8] = int(list_file_content[8]) + 1
+    match game_id:
+        case 1: #Number Guesser game
+            if result == True:
+                list_file_content[1] = int(list_file_content[1]) + 1
+            elif result == False:
+                list_file_content[2] = int(list_file_content[2]) + 1
+        case 2: #Rock Paper Scissors game
+            if result == True:
+                list_file_content[4] = int(list_file_content[4]) + 1
+            elif result == False:
+                list_file_content[5] = int(list_file_content[5]) + 1
+        case 3: #Sorting game
+            if result == True:
+                print("sorting game true")
+                list_file_content[7] = int(list_file_content[7]) + 1
+            elif result == False:
+                print("sorting game false")
+                list_file_content[8] = int(list_file_content[8]) + 1
     print(list_file_content)
     #Write the file with updated results
     with open(user_file, "w") as file:
@@ -61,8 +62,8 @@ def read_result(user_file):
                         int(content.strip())
                     case 2 | 5 | 8:
                         int(content.strip())
-                    case _:
-                        break
+                if i >= 8:
+                    break
         while len(list_file_content) < 9:
             #print("less than 9")
             list_file_content.append("0")
@@ -115,9 +116,6 @@ def user():
                         print(f"Wins: {content}")
                     case 2 | 5 | 8:
                         print(f"Loss: {content}")
-                    case _:
-                        print("toes")
-                        break 
             return [user_name, user_file]
         except OSError:
             #Create a new user
@@ -137,8 +135,6 @@ def user():
 #MAIN: The hub to access other applications from
 #RETURN: None
 def main():
-    global user_file
-
     print(f"\n🎮 Welcome {user_file[0]}!  🎮")
 
     while True:
@@ -178,9 +174,8 @@ def main():
                                 print(f"Wins: {content.strip()}")
                             case 2 | 5 | 8:
                                 print(f"Loss: {content.strip()}")
-                            case _:
-                                print("toes")
-                                break 
+                        if i >= 8:
+                            break
             case "6" | "exit":
                 print("Thanks for playing. Goodbye!")
                 break

@@ -45,16 +45,19 @@ def sorting_game(intNumberOf):
     currNumIndex = 0
     listPlayerAns = []
     while currNumIndex < intNumberOf:
-        intPlayerAns = int(input(f"\nSorting number {currNumIndex + 1}: "))
-        currNumAns = listNumbers[currNumIndex]
-        if intPlayerAns != currNumAns:
-            print(f"Incorrect! The number was {currNumAns}.")
-            print(f"You guessed {currNumIndex} out of {intNumberOf} numbers correctly.")
-            return False
-        print("Correct!")
-        listPlayerAns.append(intPlayerAns)
-        print(f"Progress...\n{listPlayerAns}")
-        currNumIndex += 1
+        try:
+            intPlayerAns = int(input(f"\nSorting number {currNumIndex + 1}: "))
+            currNumAns = listNumbers[currNumIndex]
+            if intPlayerAns != currNumAns:
+                print(f"Incorrect! The number was {currNumAns}.")
+                print(f"You guessed {currNumIndex} out of {intNumberOf} numbers correctly.")
+                return False
+            print("Correct!")
+            listPlayerAns.append(intPlayerAns)
+            print(f"Progress...\n{listPlayerAns}")
+            currNumIndex += 1
+        except ValueError:
+            print("Please enter a number")
     return True
 
 play = input("Would you like to play the sorting game? (yes/no): ").lower()
