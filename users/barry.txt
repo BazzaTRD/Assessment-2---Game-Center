@@ -1,6 +1,6 @@
 Guessing Game
-0
-0
+10
+3
 Rock Paper Scissors
 0
 0

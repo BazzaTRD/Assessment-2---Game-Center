@@ -1,9 +1,35 @@
 import os
 import subprocess
 
-def read_result(user_file, list_template):
+
+def write_result(game, result):
+    #write to the user file (other scripts use this)
+    #place values into a list
+    #'game' will be the name of the actual game ([0]number_guesser [1,2], [3]rock_paper_scissors [4,5], [6]number_sorting [7,8])
+    #'result' will be a boolean value of true(win) or false(lose)
+    global user_file
+    
+    list_file_content = read_result()
+
+    if game == 3: #Sorting game
+        if result == True:
+            list_file_content[7] += 1
+        elif result == False:
+            list_file_content[8] += 1
+    with open(user_file, "w") as file:
+            for content in list_file_content:
+                try:
+                    file.write(content + "\n")
+                except TypeError:
+                    file.write(str(content) + "\n")
+
+
+def read_result():
     #place values in a list
     #print out results
+    global user_file
+    global list_template
+    
     list_file_content = []
 
     print(f"\nYour current results are:")
@@ -28,9 +54,13 @@ def read_result(user_file, list_template):
         with open(user_file, "w") as file:
             for content in list_template:
                 file.write(content + "\n")
+        list_file_content = list_template
+    return list_file_content
 
 
-def user(list_template):
+def user():
+    global list_template
+    
     # Look for the 'users' folder
     # Create the folder if it does not exist
     try:
@@ -63,20 +93,13 @@ def user(list_template):
                     #write the existing contents with a template
                     for content in list_template:
                         file.write(content + "\n")
-                read_result(user_file, list_template)
+                read_result(user_file)
                 return user_file
         except Exception as e:
             print(f"\n An unexpected error has occurred. Please try again... Reason: {e}")
 
 
-#def write_result(game, result)
-#write to the user file (other scripts use this)
-#place values into a list
-#'game' will be the name of the actual game ([0]number_guesser [1,2], [3]rock_paper_scissors [4,5], [6]number_sorting [7,8])
-#'result' will be a boolean value of true(win) or false(lose)
-
-
-def main(user_file, list_template):
+def main(user_file):
     print("\n🎮 Welcome to the Game Center! 🎮")
 
     while True:
@@ -105,7 +128,7 @@ def main(user_file, list_template):
         #elif choice == "4":
             #subprocess.run(["python", "Sorting Game.py"])
         elif choice == "5":
-            read_result(user_file, list_template)
+            read_result(user_file)
         elif choice == "6":
             print("Thanks for playing. Goodbye!")
             break
@@ -118,10 +141,11 @@ def main(user_file, list_template):
             print("Thanks for playing. Goodbye!")
             break
 
+
+
+list_template = ["Guessing Game", "0", "0", "Rock Paper Scissors", "0", "0", "Sorting Game", "0", "0"] #Basic template of the .txt file
 if __name__ == "__main__":
-    list_template = ["Guessing Game", "0", "0", "Rock Paper Scissors", "0", "0", "Sorting Game", "0", "0"] #Basic template of the .txt file
-    
     print("🎮 Welcome to the Game Center! 🎮")
 
-    user_file = user(list_template)
-    main(user_file, list_template)
+    user_file = user()
+    main(user_file)
