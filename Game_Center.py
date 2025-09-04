@@ -71,7 +71,7 @@ def read_result(user_file):
                 file.write(content + "\n")
         list_file_content = list_template
     #print(list_file_content)
-    return list_file_content
+    return list_file_content #returns the list. Keep in mind everything is already stripped
 
 
 
