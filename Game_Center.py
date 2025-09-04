@@ -2,10 +2,12 @@ import os
 import subprocess
 
 
+#WRITE RESULTS: Modify the save file
+#RETURNS: None
 def write_result(game_num, result, user_file):
     #write to the user file (other scripts use this)
     #place values into a list
-    #'game' will be the name of the actual game ([0]number_guesser [1,2], [3]rock_paper_scissors [4,5], [6]number_sorting [7,8])
+    #'game_num' will be the dedicated number of the actual game ([0]number_guesser [1,2], [3]rock_paper_scissors [4,5], [6]number_sorting [7,8])
     #'result' will be a boolean value of true(win) or false(lose)
     
     list_file_content = read_result(user_file)
@@ -27,6 +29,7 @@ def write_result(game_num, result, user_file):
             print("sorting game false")
             list_file_content[8] = int(list_file_content[8]) + 1
     print(list_file_content)
+    #Write the file with updated results
     with open(user_file, "w") as file:
             for content in list_file_content:
                 try:
@@ -35,6 +38,8 @@ def write_result(game_num, result, user_file):
                     file.write(str(content) + "\n")
 
 
+#READ RESULTS: Ensures the integrity of the save file
+#RETURNS: A list of the save file content
 def read_result(user_file):
     #place values in a list
     #print out results
@@ -74,7 +79,8 @@ def read_result(user_file):
     return list_file_content #returns the list. Keep in mind everything is already stripped
 
 
-
+#USER: Sets up the players save files, creates or overwrites as required
+#RETURNS: A list containing [0] = Username || [1] = Save file directory
 def user():
     global list_template
     
@@ -128,7 +134,8 @@ def user():
         except Exception as e:
             print(f"\n An unexpected error has occurred. Please try again... Reason: {e}")
 
-
+#MAIN: The hub to access other applications from
+#RETURN: None
 def main():
     global user_file
 
