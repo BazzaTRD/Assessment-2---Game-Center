@@ -1,0 +1,6 @@
+HELP:
+  1. Guessing Game: Guess a number from 1 to 100 in the least number of tries.
+  2. Rock Paper Scissors: Play a best of 5 of rock paper scissors against the computer.
+  3. Sorting Game: Sort randomly generated numbers in ascending or descending order
+  4. Results: Display your current wins/losses
+Have Fun!
