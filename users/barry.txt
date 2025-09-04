@@ -1,9 +1,9 @@
 Guessing Game
-10
-3
+0
+0
 Rock Paper Scissors
 0
 0
 Sorting Game
 0
-0
+1

@@ -2,32 +2,39 @@ import os
 import subprocess
 
 
-def write_result(game, result):
+def write_result(game_num, result, user_file):
     #write to the user file (other scripts use this)
     #place values into a list
     #'game' will be the name of the actual game ([0]number_guesser [1,2], [3]rock_paper_scissors [4,5], [6]number_sorting [7,8])
     #'result' will be a boolean value of true(win) or false(lose)
-    global user_file
     
-    list_file_content = read_result()
-
-    if game == 3: #Sorting game
+    list_file_content = read_result(user_file)
+    if game_num == 1: #Number Guesser game
         if result == True:
-            list_file_content[7] += 1
+            list_file_content[1] = int(list_file_content[1]) + 1
         elif result == False:
-            list_file_content[8] += 1
+            list_file_content[2] += 1
+    elif game_num == 2: #Rock Paper Scissors game
+        if result == True:
+            list_file_content[4] += 1
+        elif result == False:
+            list_file_content[5] += 1
+    elif game_num == 3: #Sorting game
+        if result == True:
+            list_file_content[7] = int(list_file_content[7]) + 1
+        elif result == False:
+            list_file_content[8] = int(list_file_content[8]) + 1
     with open(user_file, "w") as file:
             for content in list_file_content:
                 try:
-                    file.write(content + "\n")
+                    file.write(content + "")
                 except TypeError:
-                    file.write(str(content) + "\n")
+                    file.write(str(content) + "")
 
 
-def read_result():
+def read_result(user_file):
     #place values in a list
     #print out results
-    global user_file
     global list_template
     
     list_file_content = []
@@ -81,8 +88,8 @@ def user():
             #Try existing user
             user_name = input("\nEnter your username: ").lower()
             user_file = os.path.join(users_dir, user_name + ".txt") # .txt File path
-            read_result(user_file, list_template)
-            return user_file
+            read_result(user_file)
+            return [user_name, user_file]
         except OSError:
             #Create a new user
             print(f" The user '{user_name}' does not exist.")
@@ -94,13 +101,15 @@ def user():
                     for content in list_template:
                         file.write(content + "\n")
                 read_result(user_file)
-                return user_file
+                return [user_name, user_file]
         except Exception as e:
             print(f"\n An unexpected error has occurred. Please try again... Reason: {e}")
 
 
-def main(user_file):
-    print("\n🎮 Welcome to the Game Center! 🎮")
+def main():
+    global user_file
+
+    print(f"\n🎮 Welcome {user_file[0]}!  🎮")
 
     while True:
         #Help:
@@ -124,11 +133,11 @@ def main(user_file):
         elif choice == "2":
             subprocess.run(["python", "Rock Paper Scissors.py"])
         elif choice == "3":
-            subprocess.run(["python", "Sorting Game.py"])
+            subprocess.run(["python", "Sorting Game.py", user_file[1]])
         #elif choice == "4":
             #subprocess.run(["python", "Sorting Game.py"])
         elif choice == "5":
-            read_result(user_file)
+            read_result(user_file[1])
         elif choice == "6":
             print("Thanks for playing. Goodbye!")
             break
@@ -147,5 +156,5 @@ list_template = ["Guessing Game", "0", "0", "Rock Paper Scissors", "0", "0", "So
 if __name__ == "__main__":
     print("🎮 Welcome to the Game Center! 🎮")
 
-    user_file = user() #IMPORTANT: Stores the file directory of the userr's file ([This program's directory]\users\[user].txt)
-    main(user_file)
+    user_file = user() #IMPORTANT: Stores a list <||>   [0] = user_name   ||   [1] = [This program's directory]\users\[user].txt <||>
+    main()

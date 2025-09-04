@@ -1,15 +1,17 @@
 #Barry
 
-# Add time limit?
-
 # Randomly generate 'n' (input by player) number of numbers from -999 to 999, place them all in a list
 # Ask to sort in asc or desc order
 # Player will enter the numbers 1 by 1 in the order that they had selected
 # The computer will check if the number is the correct one + if the number is in the list. If the selected number is incorrect, the player loses
 # The results of the game will be displayed (the correct number for the current guess, how many numbers guessed correct)
 
+# Basic modules
 import random
 import time
+# Used to write to the file
+import sys
+from Game_Center import write_result
 
 def sorting_game(intNumberOf):
     print("\n--- Number Sorting Game ---")
@@ -66,8 +68,12 @@ if play == "yes":
             print("\nCongratulations! You have won!")
         elif sortingReturn == False:
             print("\nYou have lost...")
+        #Write result to file
+        write_result(3, sortingReturn, sys.argv[1])
     except ValueError as e:
         print(f"Invalid input... Reason: {e}")
+    except NameError as e:
+        print(e)
     finally:
         print("Thanks for playing the Sorting Game!")
     time.sleep(1)
