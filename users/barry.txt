@@ -5,5 +5,5 @@ Rock Paper Scissors
 0
 0
 Sorting Game
-0
 1
+3
