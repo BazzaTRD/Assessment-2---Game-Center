@@ -143,9 +143,9 @@ def main(user_file):
 
 
 
-list_template = ["Guessing Game", "0", "0", "Rock Paper Scissors", "0", "0", "Sorting Game", "0", "0"] #Basic template of the .txt file
+list_template = ["Guessing Game", "0", "0", "Rock Paper Scissors", "0", "0", "Sorting Game", "0", "0"] #IMPORTANT: Basic template of the .txt file
 if __name__ == "__main__":
     print("🎮 Welcome to the Game Center! 🎮")
 
-    user_file = user()
+    user_file = user() #IMPORTANT: Stores the file directory of the userr's file ([This program's directory]\users\[user].txt)
     main(user_file)
