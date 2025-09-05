@@ -22,7 +22,7 @@ def sorting_game(intNumberOf):
     # Setting up the game
     listNumbers = []
     for i in range(0, intNumberOf):
-        listNumbers.append(random.randrange(-999, 999))
+        listNumbers.append(random.randint(-999, 999))
     print(f"You have chosen to sort '{intNumberOf}' numbers.")
     time.sleep(0.5)
     intNumberOf = len(listNumbers) # Debug
@@ -39,7 +39,7 @@ def sorting_game(intNumberOf):
         listNumbers.sort(reverse = True)
     else:
         print("\nYou have exited the game.")
-        return
+        return None
     time.sleep(.5)
     print("Let the games... BEGIN!!")
     time.sleep(1)
@@ -69,23 +69,35 @@ def sorting_game(intNumberOf):
 play = input("\nWould you like to play the sorting game? (yes/no): ").lower()
 if play == "yes":
     try:
-        intNumberOf = int(input("How many numbers would you like to sort?: "))
+        #User Input
+        while True:
+            intNumberOf = int(input("How many numbers would you like to sort?: "))
+            if intNumberOf > 0:
+                break
+            print("Please enter a positive number")
         sortingReturn = sorting_game(intNumberOf)
 
-        # Return results
-        if sortingReturn == True:
-            print("\nCongratulations! You have won!")
-        elif sortingReturn == False:
-            print("\nYou have lost...")
-        else:
-            raise ValueError("'asc' for ASCENDING || 'desc' for DESCENDING")
-        #Write result to file
-        try:
-            write_result(3, sortingReturn, sys.argv[1])
-        except FileNotFoundError:
-            print("No save file of this name exists")
-        except IndexError:
-            print("Please run this script from 'Game_Center.py' to save your result")
+
+        # Exit the game
+        if sortingReturn == None:
+            print("'asc' for ASCENDING || 'desc' for DESCENDING")
+        
+        # Game ended properly with results
+        elif sortingReturn in (True, False):
+            #Returned Results
+            if sortingReturn == True:
+                print("\nCongratulations! You have won!")
+            elif sortingReturn == False:
+                print("\nYou have lost...")
+            
+            #Write result to file
+            try:
+                write_result(3, sortingReturn, sys.argv[1])
+            except FileNotFoundError:
+                print("No save file of this name exists")
+            except IndexError:
+                print("Please run this script from 'Game_Center.py' to save your result")
+    
     except ValueError as e:
         print(f"Invalid input... Reason: {e}")
     except NameError as e:
