@@ -156,7 +156,7 @@ def main():
                 with open("help.txt") as file:
                     print(file.read())
             case "1":
-                subprocess.run(["python", "Number Game.py"])
+                subprocess.run(["python", "Number Game.py", user_file[1]])
             case "2":
                 subprocess.run(["python", "Rock Paper Scissors.py"])
             case "3":
