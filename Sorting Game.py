@@ -13,6 +13,9 @@ import time
 import sys
 from Game_Center import write_result
 
+
+#SORTING_GAME: Code to play the sorting game
+#RETURNS: [True] = Win   ||   [False] = Loss   ||   [None] = Exit game
 def sorting_game(intNumberOf):
     print("\n--- Number Sorting Game ---")
     
@@ -35,7 +38,7 @@ def sorting_game(intNumberOf):
         print("You have chosen to sort the list in DESCENDING order!")
         listNumbers.sort(reverse = True)
     else:
-        print("You have exited the game.")
+        print("\nYou have exited the game.")
         return
     time.sleep(.5)
     print("Let the games... BEGIN!!")
@@ -60,7 +63,10 @@ def sorting_game(intNumberOf):
             print("Please enter a number")
     return True
 
-play = input("Would you like to play the sorting game? (yes/no): ").lower()
+
+
+
+play = input("\nWould you like to play the sorting game? (yes/no): ").lower()
 if play == "yes":
     try:
         intNumberOf = int(input("How many numbers would you like to sort?: "))
@@ -71,8 +77,15 @@ if play == "yes":
             print("\nCongratulations! You have won!")
         elif sortingReturn == False:
             print("\nYou have lost...")
+        else:
+            raise ValueError("'asc' for ASCENDING || 'desc' for DESCENDING")
         #Write result to file
-        write_result(3, sortingReturn, sys.argv[1])
+        try:
+            write_result(3, sortingReturn, sys.argv[1])
+        except FileNotFoundError:
+            print("No save file of this name exists")
+        except IndexError:
+            print("Please run this script from 'Game_Center.py' to save your result")
     except ValueError as e:
         print(f"Invalid input... Reason: {e}")
     except NameError as e:
