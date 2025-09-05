@@ -117,7 +117,7 @@ def user():
                     case 2 | 5 | 8:
                         print(f"Loss: {content}")
             return [user_name, user_file]
-        except OSError:
+        except FileNotFoundError:
             #Create a new user
             print(f" The user '{user_name}' does not exist.")
             create_choice = input("Would you like to create a new user? y/n: ").lower()
