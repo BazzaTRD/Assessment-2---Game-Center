@@ -2,3 +2,4 @@
 *.pyc
 /__pycache__
 __pycache__/Game_Center.cpython-313.pyc
+*.txt
