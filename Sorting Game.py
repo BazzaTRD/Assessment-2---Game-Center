@@ -72,9 +72,9 @@ if play == "yes":
         #User Input
         while True:
             intNumberOf = int(input("How many numbers would you like to sort?: "))
-            if intNumberOf > 0:
+            if intNumberOf > 1:
                 break
-            print("Please enter a positive number")
+            print("Please enter a number greater than 1")
         sortingReturn = sorting_game(intNumberOf)
 
 
