@@ -30,13 +30,11 @@ def write_result(game_id, result, user_file):
                 print("sorting game false")
                 list_file_content[8] = int(list_file_content[8]) + 1
     print(list_file_content)
+    
     #Write the file with updated results
     with open(user_file, "w") as file:
             for content in list_file_content:
-                try:
-                    file.write(content + "\n")
-                except TypeError:
-                    file.write(str(content) + "\n")
+                file.write(str(content) + "\n")
 
 
 #READ RESULTS: Ensures the integrity of the save file
