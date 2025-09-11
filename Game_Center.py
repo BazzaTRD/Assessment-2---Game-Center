@@ -139,12 +139,13 @@ def main():
         #Help:
         print("\nChoose a game:")
         print("0. Help")
-        print("1. Guessing Game")
-        print("2. Rock Paper Scissors")
-        print("3. Sorting Game")
-        print("4. Logan's Game")
-        print("5. Results")
-        print("6. Exit")
+        print("1. Shopping Cart (Jin)")
+        print("2. Guessing Game (Jin)")
+        print("3. Rock Paper Scissors (Lys)")
+        print("4. Sorting Game (Barry)")
+        print("5. Colour Guesser (Logan)")
+        print("6. Results")
+        print("7. Exit")
         choice = input("Enter your choice (1-6): ").lower()
 
         #User choices
@@ -154,14 +155,16 @@ def main():
                 with open("help.txt") as file:
                     print(file.read())
             case "1":
-                subprocess.run(["python", "Number Game.py", user_file[1]])
+                subprocess.run(["python", "List_Shopping_Cart.py"])
             case "2":
-                subprocess.run(["python", "Rock Paper Scissors.py"])
+                subprocess.run(["python", "Number Game.py", user_file[1]])
             case "3":
+                subprocess.run(["python", "Rock Paper Scissors.py"])
+            case "4":
                 subprocess.run(["python", "Sorting Game.py", user_file[1]])
-            #case "4":
+            #case "5":
                 #subprocess.run(["python", "Sorting Game.py"])
-            case "5" | "result" | "results":
+            case "6" | "result" | "results":
                 print(f"\nYour current results are:")
                 with open(user_file[1]) as file:
                     for i, content in enumerate(file.readlines()):
@@ -174,7 +177,7 @@ def main():
                                 print(f"Loss: {content.strip()}")
                         if i >= 8:
                             break
-            case "6" | "exit":
+            case "7" | "exit":
                 print("Thanks for playing. Goodbye!")
                 break
             case _:
