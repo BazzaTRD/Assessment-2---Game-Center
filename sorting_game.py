@@ -23,10 +23,10 @@ def sorting_game(intNumberOf):
     listNumbers = []
     for i in range(0, intNumberOf):
         listNumbers.append(random.randint(-999, 999))
-    print(f"You have chosen to sort '{intNumberOf}' numbers.")
+    print(f"You have chosen to sort '{intNumberOf}' number{"s"if intNumberOf > 1 else ""}.")
     time.sleep(0.5)
     intNumberOf = len(listNumbers) # Debug
-    print(f"\nYour {intNumberOf} numbers are... \n {listNumbers}")
+    print(f"\nYour {intNumberOf} number{"s are"if intNumberOf > 1 else " is"}... \n {listNumbers}")
     time.sleep(1)
 
     #Sorting the list
@@ -72,7 +72,7 @@ if __name__ == "__main__":
             #User Input
             while True:
                 intNumberOf = int(input("How many numbers would you like to sort?: "))
-                if intNumberOf > 1:
+                if intNumberOf > 0:
                     break
                 print("Please enter a number greater than 1")
             sortingReturn = sorting_game(intNumberOf)
