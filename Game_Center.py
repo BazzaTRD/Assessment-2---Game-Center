@@ -13,9 +13,9 @@ def write_result(game_id, result, user_file):
     list_file_content = read_result(user_file)
     match game_id:
         case 1: #Number Guesser game
-            if result == True:
+           if result == True:
                 list_file_content[1] = int(list_file_content[1]) + 1
-            elif result == False:
+           elif result == False:
                 list_file_content[2] = int(list_file_content[2]) + 1
         case 2: #Rock Paper Scissors game
             if result == True:
