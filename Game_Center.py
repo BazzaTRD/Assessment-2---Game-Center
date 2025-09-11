@@ -130,6 +130,7 @@ def user():
         except Exception as e:
             print(f"\n An unexpected error has occurred. Please try again... Reason: {e}")
 
+
 #MAIN: The hub to access other applications from
 #RETURN: None
 def main():
@@ -163,7 +164,7 @@ def main():
             case "4":
                 subprocess.run(["python", "sorting_game.py", user_file[1]])
             case "5":
-                subprocess.run(["python", "color_guesser.py"])
+                subprocess.run(["python", "colour_guesser.py"])
             case "6" | "result" | "results":
                 print(f"\nYour current results are:")
                 with open(user_file[1]) as file:

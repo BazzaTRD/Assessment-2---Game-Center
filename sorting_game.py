@@ -30,11 +30,11 @@ def sorting_game(intNumberOf):
     time.sleep(1)
 
     #Sorting the list
-    stringAscDesc = str(input("\nHow would you like to sort the list? (asc/desc): ")).lower()
-    if stringAscDesc == "asc":
+    stringAscDesc = str(input("\nHow would you like to sort the list? (asc/desc): ")).strip().lower()
+    if stringAscDesc == "asc" or "ascending":
         print("You have chosen to sort the list in ASCENDING order!")
         listNumbers.sort()
-    elif stringAscDesc == "desc":
+    elif stringAscDesc == "desc" or "descending":
         print("You have chosen to sort the list in DESCENDING order!")
         listNumbers.sort(reverse = True)
     else:
@@ -65,43 +65,41 @@ def sorting_game(intNumberOf):
 
 
 
+if __name__ == "__main__":
+    play = input("\nWould you like to play the sorting game? (yes/no): ").strip().lower()
+    if play == "yes" or "y":
+        try:
+            #User Input
+            while True:
+                intNumberOf = int(input("How many numbers would you like to sort?: "))
+                if intNumberOf > 1:
+                    break
+                print("Please enter a number greater than 1")
+            sortingReturn = sorting_game(intNumberOf)
 
-play = input("\nWould you like to play the sorting game? (yes/no): ").lower()
-if play == "yes":
-    try:
-        #User Input
-        while True:
-            intNumberOf = int(input("How many numbers would you like to sort?: "))
-            if intNumberOf > 1:
-                break
-            print("Please enter a number greater than 1")
-        sortingReturn = sorting_game(intNumberOf)
 
-
-        # Exit the game
-        if sortingReturn == None:
-            print("'asc' for ASCENDING || 'desc' for DESCENDING")
-        
-        # Game ended properly with results
-        elif sortingReturn in (True, False):
-            #Returned Results
-            if sortingReturn == True:
-                print("\nCongratulations! You have won!")
-            elif sortingReturn == False:
-                print("\nYou have lost...")
+            # Exit the game
+            if sortingReturn == None:
+                print("'asc' for ASCENDING || 'desc' for DESCENDING")
             
-            #Write result to file
-            try:
-                write_result(3, sortingReturn, sys.argv[1])
-            except FileNotFoundError:
-                print("No save file of this name exists")
-            except IndexError:
-                print("Please run this script from 'Game_Center.py' to save your result")
-    
-    except ValueError as e:
-        print(f"Invalid input... Reason: {e}")
-    except NameError as e:
-        print(e)
-    finally:
-        print("Thanks for playing the Sorting Game!")
-    time.sleep(1)
+            # Game ended properly with results
+            elif sortingReturn in (True, False):
+                #Returned Results
+                if sortingReturn == True:
+                    print("\nCongratulations! You have won!")
+                elif sortingReturn == False:
+                    print("\nYou have lost...")
+                
+                #Write result to file
+                try:
+                    write_result(3, sortingReturn, sys.argv[1])
+                except FileNotFoundError:
+                    print("No save file of this name exists")
+                except IndexError:
+                    print("Please run this script from 'Game_Center.py' to save your result")
+        
+        except ValueError as e:
+            print(f"Invalid input... Reason: {e}")
+        finally:
+            print("Thanks for playing the Sorting Game!")
+        time.sleep(1)
