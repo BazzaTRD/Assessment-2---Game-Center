@@ -5,23 +5,39 @@
 cart = []
 prices = []
 
+#list of products and their corresponding weight
+products = ["banana","blueberry","apple","blackberry", "strawberry"]
+product_price = [3.99, 12.49, 3.50, 5.50, 6.99]
+product_all = zip(products, product_price)
+
+
+
+# function to view available products and and their prices
+def view_available_product_price():
+    for (product, price) in zip(products, product_price):
+        print(product, f"${price}")
+    
+
+
 # Function to add an item to the cart
 def add_item():
-    name = input("Enter product name: ").strip()
+    name = input("Enter product name: ").strip().lower()
+    if name not in products:
+        print(f"The item '{name}' does not exist...")
+        return
+    weight = float(input("Enter how many kg you want: "))
     try:
-        price = float(input("Enter product price: "))
-        if price < 0:
-            print("Price cannot be negative.")
-            return
+        price = product_price[products.index(name)] * weight
         cart.append(name)
         prices.append(price)
         print(f"{name} added for ${price:.2f}")
+
     except ValueError:
         print("Invalid price. Please enter a number.")
 
 # Function to view cart contents
 def view_cart():
-    if not cart:
+    if not products:
         print("Your cart is empty.")
         return
     print("\nYour cart contains:")
@@ -35,12 +51,13 @@ def view_cart():
 def remove_item():
     view_cart()
     if not cart:
+        print("Product has been removed successfrully.")
         return
     try:
         index = int(input("Enter the item number to remove: "))
-        if 1 <= index <= len(cart):
+        if 1 <= index <= len(products):
             removed_item = cart.pop(index - 1)
-            removed_price = prices.pop(index - 1)
+            prices.pop(index - 1)
             print(f"{removed_item} removed from cart.")
         else:
             print("Invalid item number.")
@@ -70,11 +87,12 @@ def checkout():
 # Main loop
 while True:
     print("\nShopping Cart Menu")
-    print("1. Add item")
-    print("2. View cart")
-    print("3. Remove item")
-    print("4. Checkout and Save to File")
-    print("5. Exit")
+    print("1. View_Available_Product_Price")
+    print("2. Add item")
+    print("3. View cart")
+    print("4. Remove item")
+    print("5. Checkout and Save to File")
+    print("6. Exit")
 
     try:
         choice = int(input("Enter your choice (1–5): "))
@@ -83,14 +101,16 @@ while True:
         continue
 
     if choice == 1:
+        view_available_product_price()
+    if choice == 2:
         add_item()
-    elif choice == 2:
-        view_cart()
     elif choice == 3:
-        remove_item()
+        view_cart()
     elif choice == 4:
-        checkout()
+        remove_item()
     elif choice == 5:
+        checkout()
+    elif choice == 6:
         print("Thank you for using the Shopping Cart. Goodbye!")
         break
     else:
