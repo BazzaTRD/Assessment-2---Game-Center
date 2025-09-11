@@ -24,12 +24,10 @@ def write_result(game_id, result, user_file):
                 list_file_content[5] = int(list_file_content[5]) + 1
         case 3: #Sorting game
             if result == True:
-                print("sorting game true")
                 list_file_content[7] = int(list_file_content[7]) + 1
             elif result == False:
-                print("sorting game false")
                 list_file_content[8] = int(list_file_content[8]) + 1
-    print(list_file_content)
+    #print(list_file_content) #Debug
     
     #Write the file with updated results
     with open(user_file, "w") as file:
