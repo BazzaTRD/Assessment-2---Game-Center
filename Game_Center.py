@@ -157,13 +157,13 @@ def main():
             case "1":
                 subprocess.run(["python", "List_Shopping_Cart.py"])
             case "2":
-                subprocess.run(["python", "Number Game.py", user_file[1]])
+                subprocess.run(["python", "number_game.py", user_file[1]])
             case "3":
-                subprocess.run(["python", "Rock Paper Scissors.py"])
+                subprocess.run(["python", "rock_paper_scissors.py"])
             case "4":
-                subprocess.run(["python", "Sorting Game.py", user_file[1]])
-            #case "5":
-                #subprocess.run(["python", "Sorting Game.py"])
+                subprocess.run(["python", "sorting_game.py", user_file[1]])
+            case "5":
+                subprocess.run(["python", "color_guesser.py"])
             case "6" | "result" | "results":
                 print(f"\nYour current results are:")
                 with open(user_file[1]) as file:
